@@ -1,0 +1,10 @@
+    <div class=''>
+      <h4><%= _("Merge Articles") %></h4>
+      <div class='class'>
+        <%= _("Article ID") %>
+        <%= text_field_tag 'merge_id', params[:merge_id], :id=>'merge_with'  %>
+        <p>
+          <input id='merge_button' type="submit" value="<%= _('Merge') %>" name="merge_button" class='btn info' />
+        </p>
+      </div>
+    </div>    
