@@ -466,4 +466,19 @@ class Article < Content
     to = to - 1 # pull off 1 second so we don't overlap onto the next day
     return from..to
   end
+
+  def merge_with(merge_article_id)
+    #Copy all comments to merged article
+    Article.find(merge_article_id).comments.each do |comment|
+      #Comment.find(comment.id).update_article(self.id)
+      comment.update_article(self.id)
+    end
+    #Merge text of body
+    merge_article=Article.find(merge_article_id)
+    self.body = self.body + merge_article.body 
+    self.save
+    merge_article.destroy
+    return self
+  end
+
 end

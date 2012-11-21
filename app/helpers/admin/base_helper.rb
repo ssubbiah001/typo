@@ -46,6 +46,11 @@ module Admin::BaseHelper
       :controller => controller, :action => 'destroy', :id => record.id
   end
 
+  def link_to_merge(record, controller = controller.controller_name)
+    link_to(_("Merge"),
+        {:controller => controller, :action => 'merge', :id => record.id},:method => :post, :class => 'btn info', :title => _("Merge"))
+  end
+
   def link_to_destroy_with_profiles(record, controller = controller.controller_name)
     if current_user.admin? || current_user.id == record.user_id
       link_to(_("delete"),
