@@ -32,6 +32,11 @@ class Comment < Feedback
     "Comment on #{article.title} by #{author}"
   end
 
+  def update_article(id)
+    self.article_id=id
+    self.save
+  end
+
   protected
 
   def article_allows_feedback?
@@ -47,4 +52,5 @@ class Comment < Feedback
   def content_fields
     [:body]
   end
+
 end
